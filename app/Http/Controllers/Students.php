@@ -12,4 +12,9 @@ class Students extends Controller
             echo implode('|||', $values)."\n";
         }
     }
+    function nominee(){
+        $array = ["ali","charbel","hsein","Pablo","Jean Paul","Lama","Stephanelle","Pablo", "Pablo"];
+        $index = rand(1,9);
+        echo $array[$index];
+    }
 }

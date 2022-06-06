@@ -16,4 +16,5 @@ Route::get('/Strings/IsPal', [Strings::class, "IsPal"])->name("IsPal");
 Route::get('/Strings/DadJoke', [Strings::class, "DadJoke"])->name("Joke");
 Route::get('/Strings/Beer', [Strings::class, "fetchBeer"])->name("Beer");
 Route::get('/time', [Time::class, "calculateElapsedTime"])->name("time");
-Route::get('/students', [Students::class, "groupOfTwo"])->name("students");
+Route::get('/students/Two', [Students::class, "groupOfTwo"])->name("students");
+Route::get('/students/Hilda',[Students::class, "nominee"])->name("hilda");
