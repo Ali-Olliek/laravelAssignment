@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Strings extends Controller
 {
@@ -16,25 +17,16 @@ class Strings extends Controller
         }
     }
 
-
    function DadJoke(){
-        $url = 'https://icanhazdadjoke.com/slack';
-
-        $response = file_get_contents($url);
-        $clean_response = preg_replace('{"text"}', '', $response); //need to hide everything but the text field
-        $Data = json_decode($response, true);
-        echo $clean_response;
-
+       $response = Http::get("https://icanhazdadjoke.com/slack");
+       echo $response["attachments"][0]["text"];
     }
 
-    function fetchBeer(){
-        $url = 'https://api.punkapi.com/v2/beers';
-        $response = file_get_contents($url);
-        $data = json_decode($response, true);
-        $index = rand(1,1000);
 
-        echo $index;
-        echo $data;
+    function fetchBeer(){
+        $response = Http::get("https://api.punkapi.com/v2/beers");
+        $index = rand(1,24);
+        echo $response[$index]["description"];
     }
 
 }
